@@ -17,9 +17,10 @@ app.use(cookieParser());
 
 // ✅ Replace this with your actual frontend domain
 app.use(cors({
-  origin: ["https://note-app-mern-frontend.vercel.app"],
+  origin: ["https://note-app-mern-frontend.vercel.app"], // 🔁 Your actual frontend domain
   credentials: true
 }));
+
 
 import authRouter from './routes/auth.route.js';
 import noteRouter from './routes/note.route.js';
@@ -27,6 +28,9 @@ import noteRouter from './routes/note.route.js';
 app.use("/api/auth", authRouter);
 app.use("/api/note", noteRouter);
 
+app.get("/ping",(req,res) => {
+    res.send("meet");
+})
 // ✅ Clean error handler
 app.use((err, req, res, next) => {
     const statusCode  = err.statusCode || 500;
