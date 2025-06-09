@@ -21,6 +21,11 @@ app.use(cors({
   credentials: true
 }));
 
+app.get("/ping", (req, res) => {
+    res.send("meet");
+});
+
+
 
 import authRouter from './routes/auth.route.js';
 import noteRouter from './routes/note.route.js';
@@ -28,9 +33,8 @@ import noteRouter from './routes/note.route.js';
 app.use("/api/auth", authRouter);
 app.use("/api/note", noteRouter);
 
-app.get("/ping",(req,res) => {
-    res.send("meet");
-})
+
+
 // ✅ Clean error handler
 app.use((err, req, res, next) => {
     const statusCode  = err.statusCode || 500;
