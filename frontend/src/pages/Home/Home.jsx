@@ -43,7 +43,7 @@ function Home() {
   // get all notes 
   const getAllNotes = async ()=>{
     try {
-        const res = await axios.get("http://localhost:3000/api/note/all",{withCredentials:true})
+        const res = await axios.get("https://note-app-mern-api-nu.vercel.app/api/note/all",{withCredentials:true})
 
         if(res.data.success === false){
           console.log(res.data);
@@ -66,7 +66,7 @@ function Home() {
     const noteId = data._id 
 
     try {
-      const res= await axios.delete("http://localhost:3000/api/note/delete/"+ noteId ,{withCredentials:true})
+      const res= await axios.delete("https://note-app-mern-api-nu.vercel.app/api/note/delete/"+ noteId ,{withCredentials:true})
 
       if(res.data.success === false){
         toast.error(res.data.message)
@@ -82,7 +82,7 @@ function Home() {
 
   const onSearchNote =async (query)=>{
     try {
-      const res =await axios.get("http://localhost:3000/api/note/search",{params: {query},
+      const res =await axios.get("https://note-app-mern-api-nu.vercel.app/api/note/search",{params: {query},
       withCredentials:true})
 
       if(res.data.message === false){
@@ -107,7 +107,7 @@ function Home() {
     const noteId = noteData._id
 
     try {
-      const res= await axios.put("http://localhost:3000/api/note/update-note-pinned/"+noteId,{isPending: !noteData.isPinned},{withCredentials:true})
+      const res= await axios.put("https://note-app-mern-api-nu.vercel.app/api/note/update-note-pinned/"+noteId,{isPending: !noteData.isPinned},{withCredentials:true})
 
       if(res.data.success === false){
         toast.error(res.data.message)
